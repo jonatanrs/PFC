@@ -1,0 +1,21 @@
+﻿@model PFC.WebApp.Models.InvoicesViewModel.InvoiceViewModel
+
+@{
+    ViewBag.Subtitle = "Generar factura";
+    ViewBag.ReturnUrl = Url.Action(nameof(PFC.WebApp.Controllers.SubscriptionsController.Details), new { id = Model.SubscriptionId });
+}
+
+@using (Html.BeginCustomForm())
+{
+    @Html.HiddenFor(x => x.SubscriptionId)
+    @Html.FormFieldFor(x => x.Period, selectList: (Microsoft.AspNetCore.Mvc.Rendering.SelectList)ViewBag.Periodos)
+
+    <div class="form-group">
+        @Html.CancelButton((string)ViewBag.ReturnUrl)
+        @Html.SubmitButton()
+    </div>
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

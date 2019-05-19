@@ -1,0 +1,109 @@
+﻿@model PFC.WebApp.Data.Models.Invoice
+
+@{
+    ViewBag.Subtitle = "Borrar";
+    ViewBag.ReturnUrl = Url.Action("Index");
+}
+
+@using (Html.BeginCustomForm())
+{
+    <h3>¿Está seguro de querer borrar esta factura?</h3>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Identificador)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Identificador)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EmissionDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EmissionDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.State)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CallDuration)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FriendlyCallDuration)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CallPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CallPrice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DataTrafficBytes)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FriendlyDataTraffic)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DataTrafficPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataTrafficPrice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SMS)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SMS)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SMSPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SMSPrice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Subtotal)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Subtotal)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TaxRate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TaxRate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Subscription)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Subscription.MSISDN)
+        </dd>
+    </dl>
+    <div class="form-group">
+        @Html.SubmitButton("Borrar")
+        @Html.CancelButton((string)ViewBag.ReturnUrl)
+    </div>
+}
+

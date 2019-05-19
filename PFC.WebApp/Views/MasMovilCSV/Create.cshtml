@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Subtitle = "Subir";
+    ViewBag.ReturnUrl = Url.Action("Index");
+}
+
+@using (Html.BeginForm(FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @if (!ViewData.ModelState.IsValid)
+    {
+        @Html.ValidationSummary("Errores", new { @class = "alert alert-danger" })
+    }
+
+    <div class="form-group">
+        <label for="File">Fichero</label>
+        <input type="file" name="File">
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Crear" class="btn btn-primary" />
+        <a href="@Url.Action("Index")" class="btn btn-default">Volver</a>
+    </div>
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

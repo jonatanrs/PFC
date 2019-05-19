@@ -1,0 +1,36 @@
+﻿@model PFC.WebApp.Data.Models.MasMovilFileState
+
+@{
+    ViewBag.Subtitle = "Borrar";
+    ViewBag.ReturnUrl = Url.Action("Index");
+
+}
+
+@if (!ViewData.ModelState.IsValid)
+{
+    @Html.ValidationSummary("Errores", new { @class = "alert alert-danger" })
+}
+
+<h3>¿Está seguro de querer borrar este documento?</h3>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RegistersCount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RegistersCount)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        <a href="@ViewBag.ReturnUrl" class="btn btn-default">Volver</a>
+    }
+</div>

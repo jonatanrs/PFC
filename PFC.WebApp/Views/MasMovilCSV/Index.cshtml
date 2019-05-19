@@ -1,0 +1,16 @@
+﻿@model PFC.WebApp.Support.DataTableDefinition
+
+@{
+    ViewBag.Subtitle = "Ficheros";
+}
+
+@if (!ViewData.ModelState.IsValid)
+{
+    @Html.ValidationSummary("Errores", new { @class = "alert alert-danger" })
+}
+
+@Html.DataTableForModel()
+
+@section Scripts{
+    <script src="~/js/site.datatable.js"></script>
+}

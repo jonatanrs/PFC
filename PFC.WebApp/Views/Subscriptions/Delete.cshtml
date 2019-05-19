@@ -1,0 +1,42 @@
+﻿@model PFC.WebApp.Data.Models.Subscription
+
+@{
+    ViewBag.SubTitle = "Borrar";
+    ViewBag.ReturnUrl = Url.Action(nameof(PFC.WebApp.Controllers.SubscriptionsController.Index));
+}
+
+
+@using (Html.BeginCustomForm())
+{
+    <h3>¿Está seguro de querer borrar este abonado?</h3>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MSISDN)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MSISDN)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SubscriptionDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SubscriptionDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CancellationDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CancellationDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Plan)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Plan.Name)
+        </dd>
+    </dl>
+
+    @Html.SubmitButton("Borrar")
+    <a href="@Url.Action(nameof(PFC.WebApp.Controllers.SubscriptionsController.Index))" class="btn btn-default">Volver</a>
+}

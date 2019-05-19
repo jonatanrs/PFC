@@ -1,0 +1,22 @@
+﻿
+@functions {
+    Microsoft.AspNetCore.Html.IHtmlContent RenderIfPermitted(string controller, string text)
+    {
+        var roles = ControllerAuthorization.ControllerAuthorizedRoles(controller);
+        return (!roles.Any() || roles.Any(x => User.IsInRole(x)))
+            ? Html.Partial("_MenuEntry", Tuple.Create(controller, text))
+            : new Microsoft.AspNetCore.Html.HtmlContentBuilder();
+
+    }
+}
+
+<ul class="nav nav-sidebar">
+    @RenderIfPermitted("AdminUsers", "Usuarios")
+    @RenderIfPermitted("Commission", "Comisiones")
+    @RenderIfPermitted("Invoices", "Facturas")
+    @RenderIfPermitted("MasMovilCSV", "MasMóvil")
+    @RenderIfPermitted("PhoneEvents", "Eventos")
+    @RenderIfPermitted("Plans", "Tarifas")
+    @RenderIfPermitted("Report", "Informes")
+    @RenderIfPermitted("Subscriptions", "Abonados")
+</ul>

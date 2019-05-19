@@ -1,0 +1,40 @@
+﻿@model PFC.WebApp.Data.Models.Subscription
+
+@{
+    ViewBag.Subtitle = "Detalles";
+    ViewBag.ReturnUrl = Url.Action(nameof(PFC.WebApp.Controllers.SubscriptionsController.Index));
+}
+
+
+<dl class="dl-horizontal">
+    <dt>
+        @Html.DisplayNameFor(model => model.MSISDN)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.MSISDN)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.SubscriptionDate)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.SubscriptionDate)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.CancellationDate)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.CancellationDate)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.Plan)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.Plan.Name)
+    </dd>
+</dl>
+
+@Html.DataTableFor((PFC.WebApp.Support.DataTableDefinition)ViewBag.InvoiceDataTableDefinition)
+
+@section Scripts{
+    <script src="~/js/site.datatable.js"></script>
+}

@@ -1,0 +1,21 @@
+﻿@model PFC.WebApp.Data.Models.Subscription
+@inject UserManager<ApplicationUser> userManager
+
+@{
+    ViewBag.SubTitle = "Editar";
+    ViewBag.ReturnUrl = Url.Action(nameof(PFC.WebApp.Controllers.SubscriptionsController.Index));
+}
+
+@using (Html.BeginCustomForm())
+{
+    @Html.FormFieldFor(x => x.UserId, selectList: userManager.Users.Select(x => new SelectListItem() { Text = x.UserName, Value = x.Id }))
+    @Html.FormFieldFor(x => x.MSISDN)
+    @Html.FormFieldFor(x => x.PlanId, selectList: (IEnumerable<SelectListItem>)ViewBag.PlanId)
+    @Html.FormFieldFor(x => x.SubscriptionDate)
+    @Html.FormFieldFor(x => x.CancellationDate)
+
+    <div class="form-group">
+        @Html.SubmitButton()
+        @Html.CancelButton(Url.Action(nameof(PFC.WebApp.Controllers.SubscriptionsController.Index)))
+    </div>
+}

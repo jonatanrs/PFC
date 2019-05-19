@@ -1,0 +1,23 @@
+﻿@model PFC.WebApp.Data.Models.Plan
+
+@{
+    ViewBag.SubTitle = "Crear";
+    ViewBag.ReturnUrl = Url.Action(nameof(PFC.WebApp.Controllers.PlansController.Index));
+}
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-md-4">
+            @Html.FormFieldFor(x => x.Name)
+            @Html.FormFieldFor(x => x.VoicePlan)
+            @Html.FormFieldFor(x => x.DataPlan)
+            @Html.FormFieldFor(x => x.SMSPlan)
+            @Html.FormFieldFor(x => x.Charge)
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+                @Html.ActionLink("Volver", nameof(PFC.WebApp.Controllers.PlansController.Index), new { }, new { @class = "btn btn-default" })
+            </div>            
+        </div>
+    </div>
+}

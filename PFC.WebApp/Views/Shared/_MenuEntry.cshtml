@@ -1,0 +1,4 @@
+﻿@model Tuple<string,string>
+<li class='@(ViewContext.RouteData.Values["Controller"].ToString() == Model.Item1 ? "active" : "")'>
+    @Html.ActionLink(Model.Item2, "Index", Model.Item1)
+</li>

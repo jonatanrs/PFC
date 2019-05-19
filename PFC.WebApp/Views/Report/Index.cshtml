@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Subtitle = "Listado";
+}
+
+<ul>
+    <li>
+        <a href="@Url.Action(nameof(PFC.WebApp.Controllers.ReportController.PhoneEventsWithoutSubscription))">Eventos telefónicos sin abonado vigente</a>
+    </li>
+    <li>
+        <a href="@Url.Action(nameof(PFC.WebApp.Controllers.ReportController.SubscriptionsWithPendingInvoices))">Abonados telefónicos con facturas pendientes de emisión</a>
+    </li>
+</ul>

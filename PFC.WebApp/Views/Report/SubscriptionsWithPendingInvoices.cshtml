@@ -1,0 +1,46 @@
+﻿@model IEnumerable<PFC.WebApp.Data.Models.Subscription>
+
+@{
+    ViewBag.Subtitle = "Abonados telefónicos con facturas pendientes de emisión";
+    ViewBag.ReturnUrl = Url.Action(nameof(PFC.WebApp.Controllers.SubscriptionsController.Index));
+}
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MSISDN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubscriptionDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CancellationDate)
+            </th>
+            <th>Facturas emitidas</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MSISDN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubscriptionDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CancellationDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Invoices.Count)
+                </td>
+                <td>
+                    <a href="@Url.Action(nameof(PFC.WebApp.Controllers.SubscriptionsController.Details),"Subscriptions", new { id = item.ID})"><i class="glyphicon glyphicon-eye-open"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

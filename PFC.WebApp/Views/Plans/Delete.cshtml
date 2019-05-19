@@ -1,0 +1,52 @@
+﻿@model PFC.WebApp.Data.Models.Plan
+
+@{
+    ViewBag.SubTitle = "Borrar";
+    ViewBag.ReturnUrl = Url.Action(nameof(PFC.WebApp.Controllers.PlansController.Index));
+}
+
+@if (!ViewData.ModelState.IsValid)
+{
+    @Html.ValidationSummary("Errores", new { @class = "alert alert-danger" })
+}
+
+<h3>¿Está seguro de querer borrar esta tarifa?</h3>
+
+<dl class="dl-horizontal">
+    <dt>
+        @Html.DisplayNameFor(model => model.Name)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.Name)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.Charge)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.Charge)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.VoicePlan)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.VoicePlan)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.DataPlan)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.DataPlan)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.SMSPlan)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.SMSPlan)
+    </dd>
+</dl>
+
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Borrar" class="btn btn-primary" />
+    <a href="@Url.Action(nameof(PFC.WebApp.Controllers.PlansController.Index))" class="btn btn-default">Volver</a>
+}

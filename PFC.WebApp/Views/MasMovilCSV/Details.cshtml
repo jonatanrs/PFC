@@ -1,0 +1,51 @@
+﻿@model PFC.WebApp.Data.Models.MasMovilFileState
+
+@{
+    ViewBag.Subtitle = "Detalles";
+    ViewBag.ReturnUrl = Url.Action("Index");
+}
+
+<div>
+    <h4>Fichero</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RegistersCount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RegistersCount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.State)
+        </dd>
+    </dl>
+</div>
+
+@if (Model.State == PFC.WebApp.Data.Models.MasMovilFileStateEnum.Error)
+{
+    <div class="alert alert-danger">
+        <span>Se detectaron errores durante la importación</span>
+        <ul>
+            @foreach (var errorMessage in Model.Error.Split(";"))
+            {
+                <li>@errorMessage</li>
+            }
+        </ul>
+    </div>
+
+}
+
+@Html.DataTableFor((PFC.WebApp.Support.DataTableDefinition)ViewBag.MasMovilFileDataTableDefinition)
+
+@section Scripts{
+    <script src="~/js/site.datatable.js"></script>
+}

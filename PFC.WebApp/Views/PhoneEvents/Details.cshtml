@@ -1,0 +1,67 @@
+﻿@model PFC.WebApp.Data.Models.PhoneEvent
+
+@{
+    ViewBag.Subtitle = "Detalles";
+    ViewBag.ReturnUrl = Url.Action("Index");
+}
+
+<div>
+    <h4>Evento</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Localizer)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Localizer)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Provider)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Provider)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SourceId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SourceId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DestinationId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DestinationId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Duration)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Duration)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProviderCharge)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProviderCharge)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Charge)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Charge)
+        </dd>
+    </dl>
+</div>

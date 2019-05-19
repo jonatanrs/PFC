@@ -1,0 +1,44 @@
+﻿@model IEnumerable<PFC.WebApp.Models.Report.PhoneEventsWithoutSubscriptionDTO>
+
+@{ 
+    ViewBag.Subtitle = "Eventos telefónicos sin abonado vigente";
+    ViewBag.ReturnUrl = Url.Action(nameof(PFC.WebApp.Controllers.SubscriptionsController.Index));
+}
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MSISDN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventsCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Last)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MSISDN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventsCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.First)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Last)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,23 @@
+﻿@model PFC.WebApp.Models.AccountViewModels.RegisterViewModel
+
+@inject UserManager<ApplicationUser> _userManager
+
+@{
+    ViewBag.Subtitle = "Editar";
+    ViewBag.ReturnUrl = Url.Action(nameof(PFC.WebApp.Controllers.AdminUsersController.Index));
+}
+
+@using (Html.BeginCustomForm())
+{
+    @Html.FormFieldFor(x => x.NIF)
+    @Html.FormFieldFor(x => x.Email)
+    @Html.FormFieldFor(x => x.ComercialId, selectList: _userManager.GetUsersInRoleAsync("Comercial").Result.Select(u => new SelectListItem() { Text = u.UserName, Value = u.Id }).Prepend(new SelectListItem()))
+    <div class="form-group">
+        <input type="submit" value="Guardar" class="btn btn-primary" />
+        @Html.ActionLink("Volver", nameof(PFC.WebApp.Controllers.AdminUsersController.Index), new { }, new { @class = "btn btn-default" })
+    </div>
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
