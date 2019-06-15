@@ -52,12 +52,16 @@ namespace PFC.WebApp
             }
             else
             {
-                services.AddTransient<IEmailSender>(x => new EmailSender("smtp.office365.com", 587, "pfcwebapp@outlook.com", "s@ametsis2018"));
+                var host = Configuration.GetValue<string>("AppSettings:EmailSender.Host");
+                var port = int.Parse(Configuration.GetValue<string>("AppSettings:EmailSender.Port"));
+                var user = Configuration.GetValue<string>("AppSettings:EmailSender.User");
+                var password = Configuration.GetValue<string>("AppSettings:EmailSender.Password");
+                services.AddTransient<IEmailSender>(x => new EmailSender(host, port, user, password));
             }
             services.AddTransient<IContentTypeProvider, FileExtensionContentTypeProvider>();
 
-            var path = Configuration.GetValue<string>("AppSettings:DocumentManagerDiskProviderRepositoryPath");
-            services.AddTransient<IDocumentRepositoryManager>(x => new DocumentRepositoryManager(path));
+            var documentMAnagerPath = Configuration.GetValue<string>("AppSettings:DocumentManagerDiskProviderRepositoryPath");
+            services.AddTransient<IDocumentRepositoryManager>(x => new DocumentRepositoryManager(documentMAnagerPath));
             services.AddLogging(x => x.AddConsole());
 
             services.AddMvc()
@@ -145,14 +149,17 @@ namespace PFC.WebApp
                         // Creamos un usuario con derechos de supervaca
                         if (!userManager.Users.Any())
                         {
+                            var adminUser = Configuration.GetValue<string>("AppSettings:Admin.User");
+                            var adminEmail = Configuration.GetValue<string>("AppSettings:Admin.Email");
+                            var adminPassword = Configuration.GetValue<string>("AppSettings:Admin.Password");
                             ApplicationUser superAdminUser = new ApplicationUser()
                             {
-                                UserName = "A00000000",
-                                Email = "pfcwebapp@outlook.com",
+                                UserName = adminUser,
+                                Email = adminEmail,
                                 EmailConfirmed = true,
                             };
 
-                            await userManager.CreateAsync(superAdminUser, "S@metsis2018");
+                            await userManager.CreateAsync(superAdminUser, adminPassword);
                             await userManager.AddToRoleAsync(superAdminUser, "SuperAdmin");
                         }
                     }

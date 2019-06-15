@@ -11,7 +11,7 @@ using PFC.WebApp.Models.Report;
 
 namespace PFC.WebApp.Controllers
 {
-    [Authorize(Roles = "SuperAdmin, Gestor")]
+    [Authorize(Roles = "SuperAdmin,Gestor")]
     public class ReportController : Controller
     {
         private readonly ApplicationDbContext _context;

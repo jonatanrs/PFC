@@ -13,6 +13,11 @@
         public string Usuario { get; set; }
 
         /// <summary>
+        /// Correo electrónico
+        /// </summary>
+        public string Email { get; set; }
+
+        /// <summary>
         /// Roles del usuario.
         /// </summary>
         public string Roles { get; set; }

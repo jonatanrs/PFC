@@ -19,7 +19,7 @@ using PFC.WebApp.Support.PredicateBuilder;
 namespace PFC.WebApp.Controllers
 {
 
-    [Authorize(Roles = "SuperAdmin, Gestor")]
+    [Authorize(Roles = "SuperAdmin,Gestor")]
     public class AdminUsersController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -73,6 +73,7 @@ namespace PFC.WebApp.Controllers
                     Values = new Dictionary<string, string> { { "id", "ID" } }
                 })
                 .MapColumn(nameof(AdminUserViewModel.Usuario), "Nombre", 100)
+                .MapColumn(nameof(AdminUserViewModel.Email), "Correo electrónico", 100)
                 .MapColumn(nameof(AdminUserViewModel.Roles), "Roles", 100)
                 .MapColumn(nameof(AdminUserViewModel.Comercial), "Comercial", 100)
                 .MapColumn(nameof(AdminUserViewModel.IsLocked), "Bloqueado", 100);
@@ -93,6 +94,7 @@ namespace PFC.WebApp.Controllers
             {
                 ID = x.Id,
                 Usuario = x.UserName,
+                Email = x.Email,
                 Roles = string.Join(" | ", _userManager.GetRolesAsync(x).Result),
                 Comercial = x.Comercial?.UserName ?? String.Empty,
                 IsLocked = _userManager.IsLockedOutAsync(x).Result

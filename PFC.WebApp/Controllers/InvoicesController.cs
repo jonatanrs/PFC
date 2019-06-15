@@ -74,9 +74,11 @@ namespace PFC.WebApp.Controllers
         // GET: Invoices/Details/5
         public async Task<IActionResult> Details(int id)
         {
+            var isGestor = User.IsInRole("Gestor") || User.IsInRole("SuperAdmin");
+
             var invoice = await _context.Invoice
                 .Include(i => i.Subscription)
-                .SingleOrDefaultAsync(m => m.ID == id);
+                .SingleOrDefaultAsync(m => m.ID == id && (isGestor || m.Subscription.User.UserName == User.Identity.Name));
 
             if (invoice == null)
                 return NotFound();
@@ -113,7 +115,7 @@ namespace PFC.WebApp.Controllers
         }
 
         // GET: Invoices/Delete/5
-        [Authorize(Roles = "SuperAdmin, Gestor")]
+        [Authorize(Roles = "SuperAdmin,Gestor")]
         public async Task<IActionResult> Emit(int id)
         {
             var invoice = await _context.Invoice
@@ -132,7 +134,7 @@ namespace PFC.WebApp.Controllers
         // POST: Invoices/Delete/5
         [ValidateAntiForgeryToken]
         [HttpPost, ActionName("Emit")]
-        [Authorize(Roles = "SuperAdmin, Gestor")]
+        [Authorize(Roles = "SuperAdmin,Gestor")]
         public async Task<IActionResult> EmitConfirmed(int id)
         {
             var invoice = await _context.Invoice
@@ -156,7 +158,7 @@ namespace PFC.WebApp.Controllers
 
 
         // GET: Invoices/Delete/5
-        [Authorize(Roles = "SuperAdmin, Gestor")]
+        [Authorize(Roles = "SuperAdmin,Gestor")]
         public async Task<IActionResult> Delete(int id)
         {
             var invoice = await _context.Invoice
@@ -175,7 +177,7 @@ namespace PFC.WebApp.Controllers
         // POST: Invoices/Delete/5
         [ValidateAntiForgeryToken]
         [HttpPost, ActionName("Delete")]
-        [Authorize(Roles = "SuperAdmin, Gestor")]
+        [Authorize(Roles = "SuperAdmin,Gestor")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var invoice = await _context.Invoice

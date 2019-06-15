@@ -14,7 +14,7 @@ using PFC.WebApp.Support.PredicateBuilder;
 
 namespace PFC.WebApp.Controllers
 {
-    [Authorize(Roles = "SuperAdmin, Gestor")]
+    [Authorize(Roles = "SuperAdmin,Gestor")]
     public class PlansController : Controller
     {
         private readonly ApplicationDbContext _context;
