@@ -4,4 +4,4 @@
 * Que el sistema sea capaz de importar consumos telefónicos de diferentes operadoras, retasar las llamadas en función de las tarifas definidas por la empresa revendedora y calcular la facturación telefónica de sus clientes.
 * Permitir a los clientes acceder a la plataforma con acceso limitado a su información, así como al detalle de consumo de sus líneas.
 
-[![Presentación PFC](http://img.youtube.com/vi/NeP0pfB_8Vk/0.jpg)](http://www.youtube.com/watch?v=NeP0pfB_8Vk "Presentación PFC")
+[![Presentación PFC](https://img.youtube.com/vi/NeP0pfB_8Vk/maxresdefault.jpg)](http://www.youtube.com/watch?v=NeP0pfB_8Vk "Presentación PFC")
